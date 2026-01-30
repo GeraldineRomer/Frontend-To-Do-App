@@ -1,0 +1,11 @@
+<h2>Lista de tareas</h2>
+
+<ul>
+  @for (task of tasks; track task.id_tarea) {
+    <li>
+      {{ task.titulo }} - {{ task.completado ? '✅' : '❌' }}
+    </li>
+  } @empty {
+    <li>No hay tareas aún</li>
+  }
+</ul>
