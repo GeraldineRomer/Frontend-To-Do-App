@@ -1,11 +1,74 @@
-<h2>Lista de tareas</h2>
+<div class="encabezado">
+  <mat-icon class="checklist-icon" aria-hidden="false" fontIcon="checklist"></mat-icon>
+  <h2 class="titulo">Mi Lista de Tareas</h2>
+</div>
+<p class="subtitulo">Organiza tu día de manera eficiente</p>
+<div class="contenido">
+  <form class="contenido-form">
+    <mat-form-field class="contenido-form-tarea">
+      <mat-label>Nombre de la tarea</mat-label>
+      <input matInput placeholder="Añadir una nueva tarea..." class="contenido-form-tarea-input">
+    </mat-form-field>
+    <mat-form-field class="contenido-form-descripcion">
+      <mat-label>Descripción de la tarea</mat-label>
+      <textarea matInput placeholder="Añadir descripción de la tarea (opcional)..."></textarea>
+    </mat-form-field>
+  </form>
+  <button matButton="filled" class="contenido-form-btn">Añadir tarea</button>
+  <!-- Filtros para mostrar las tareas -->
+  <mat-tab-group class="contenido-tabs">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <span class="contenido-tabs-titulo">Todas</span>
+    </ng-template>
 
-<ul>
-  @for (task of tasks; track task.id_tarea) {
-    <li>
-      {{ task.titulo }} - {{ task.completado ? '✅' : '❌' }}
-    </li>
-  } @empty {
-    <li>No hay tareas aún</li>
-  }
-</ul>
+    @for (task of allTasks$ | async; track task.id_tarea) {
+
+      <div class="task-item">
+        <div class="task-text">
+          <p class="task-title">{{ task.titulo }}</p>
+          <p class="task-desc">{{ task.descripcion }}</p>
+        </div>
+
+        <mat-icon>
+          {{ task.completado ? 'check_circle' : 'cancel' }}
+        </mat-icon>
+      </div>
+
+    } @empty {
+      <p>No hay tareas. ¡Añade una para empezar!</p>
+    }
+  </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="contenido-tabs-titulo">Pendientes</span>
+      </ng-template>
+      @for (task of activateTasks$ | async; track task.id_tarea){
+        <div class="task-item">
+          <div class="task-text">
+            <p class="task-title">{{ task.titulo }}</p>
+            <p class="task-desc">{{ task.descripcion }}</p>
+          </div>
+        </div>
+      } @empty {
+        <p>No hay tareas.</p>
+      }
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="contenido-tabs-titulo">Completadas</span>
+      </ng-template>
+      @for (task of completedTasks$ | async; track task.id_tarea){
+        <div class="task-item">
+          <div class="task-text">
+            <p class="task-title">{{ task.titulo }}</p>
+            <p class="task-desc">{{ task.descripcion }}</p>
+          </div>
+        </div>
+      } @empty {
+        <p>No hay tareas.</p>
+      }
+    </mat-tab>
+  </mat-tab-group>
+</div>
+

@@ -1,0 +1,88 @@
+.encabezado{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 50px;
+}
+
+.checklist-icon {
+  color: #BA005C;
+  margin: 5px 15px;
+  font-size: 60px;
+  height: 60px;
+  width: 60px;
+  display: flex;
+}
+
+.titulo{
+  font-weight: 400;
+  font-size: 50px;
+}
+
+.subtitulo{
+  display: flex;
+  justify-content: center;
+  font-size: large;
+  font-weight: lighter;
+}
+
+.contenido{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 5px 500px;
+}
+
+.contenido-form{
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+  margin: 30px;
+}
+
+.contenido-form-btn{
+  height: 40px;
+  width: 30%;
+  font-size: large;
+}
+
+.contenido-tabs{
+  width: 100%;
+  margin-top: 50px;
+}
+
+.contenido-tabs-titulo{
+  font-size: 18px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 4px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.task-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.task-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.task-desc {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}
+
+mat-icon {
+  margin-left: 12px;
+  color: #BA005C;
+}
